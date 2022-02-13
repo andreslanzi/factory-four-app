@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Card, Row, Col } from "antd";
 import Loader from "./Loader";
 import moment from "moment";
-import { endpoints } from "../services/endpoints";
 
 const Dashboard = () => {
   const [apiFetched, setApiFetched] = useState(false);
@@ -27,7 +27,7 @@ const Dashboard = () => {
     workflows: {},
   });
 
-  /// Set inverval to fetch data (milliseconds)
+  /// INTERVAL TO FETCH DATA (IN MILLISECONDS)
   useEffect(() => {
     fetchData();
     const interval = setInterval(() => {
@@ -37,9 +37,10 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
-  /// Api calls , data fetched and stored
+  /// API FETCHED AND DATA STORED
   const fetchData = () => {
-    endpoints.getAccounts
+    axios
+      .get("https://api.factoryfour.com/accounts/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -59,7 +60,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getAssets
+    axios
+      .get("https://api.factoryfour.com/assets/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -79,7 +81,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getCustomers
+    axios
+      .get("https://api.factoryfour.com/customers/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -99,7 +102,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getDatapoints
+    axios
+      .get("https://api.factoryfour.com/datapoints/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -119,7 +123,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getDevices
+    axios
+      .get("https://api.factoryfour.com/devices/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -139,7 +144,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getDocuments
+    axios
+      .get("https://api.factoryfour.com/documents/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -159,7 +165,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getForms
+    axios
+      .get("https://api.factoryfour.com/forms/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -179,7 +186,10 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getInvites
+    axios
+      .get(
+        "https://cors-anywhere.herokuapp.com/https://api.factoryfour.com/invites/health/status"
+      )
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -199,7 +209,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getMedia
+    axios
+      .get("https://api.factoryfour.com/media/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -219,7 +230,10 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getMessages
+    axios
+      .get(
+        "https://cors-anywhere.herokuapp.com/https://api.factoryfour.com/messages/health/status"
+      )
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -239,7 +253,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getNamespaces
+    axios
+      .get("https://api.factoryfour.com/namespaces/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -259,7 +274,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getOrders
+    axios
+      .get("https://api.factoryfour.com/orders/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -279,7 +295,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getPatients
+    axios
+      .get("https://api.factoryfour.com/patients/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -299,7 +316,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getRelationships
+    axios
+      .get("https://api.factoryfour.com/relationships/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -319,7 +337,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getRules
+    axios
+      .get("https://api.factoryfour.com/rules/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -339,7 +358,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getTemplates
+    axios
+      .get("https://api.factoryfour.com/templates/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -359,7 +379,10 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getUsers
+    axios
+      .get(
+        "https://cors-anywhere.herokuapp.com/https://api.factoryfour.com/users/health/status"
+      )
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -379,7 +402,8 @@ const Dashboard = () => {
           };
         });
       });
-    endpoints.getWorkflows
+    axios
+      .get("https://api.factoryfour.com/workflows/health/status")
       .then((res) => {
         let data = res.data;
         setDataFetched((previousState) => {
@@ -402,7 +426,7 @@ const Dashboard = () => {
     setApiFetched(true);
   };
 
-  /// Time formatter for unix timestamp
+  /// TIME FORMATTER FROM UNIX TIMESTAMP
   const unixTime = (number) => {
     let date = moment(number);
     return date.format("h:mm:ss");
@@ -411,7 +435,7 @@ const Dashboard = () => {
   if (!apiFetched) return <Loader />;
 
   return (
-    <Row gutter={[24, 24]} className="card-container">
+    <Row gutter={[32, 32]} className="card-container">
       {Object.keys(dataFetched).map((key) => (
         <Col xs={12} sm={8} lg={4} className="card">
           <Card
