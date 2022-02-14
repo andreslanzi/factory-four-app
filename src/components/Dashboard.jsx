@@ -450,7 +450,13 @@ const Dashboard = () => {
                   }
                 : dataFetched[key]?.hostname === "403"
                 ? { textAlign: "center", color: "red" }
-                : { textAlign: "center" }
+                : {
+                    textAlign: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignContent: "center",
+                  }
             }
             headStyle={
               dataFetched[key].success
@@ -465,7 +471,9 @@ const Dashboard = () => {
                     color: "black",
                     textAlign: "center",
                   }
-                : { textAlign: "center" }
+                : {
+                    textAlign: "center",
+                  }
             }
             hoverable
           >
@@ -497,7 +505,9 @@ const Dashboard = () => {
                   </p>
                 </div>
               </div>
-            ) : null}
+            ) : (
+              <Loader />
+            )}
           </Card>
         </Col>
       ))}

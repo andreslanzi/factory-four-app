@@ -145,3 +145,11 @@ span {
 .ant-layout-footer a :hover {
   color: rgb(35, 197, 20);
 }
+
+.card-content .waiting-message {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 1.5rem;
+  align-items: center;
+}
