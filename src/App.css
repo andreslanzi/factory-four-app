@@ -36,6 +36,13 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: "Josefin Sans", sans-serif !important;
+  font-family: "Nunito", sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.loader h1 {
+  font-weight: bold;
 }
 
 /* @media screen and (max-width: 1300px) {
@@ -126,6 +133,8 @@ span {
   font-family: "Josefin Sans", sans-serif;
   font-family: "Nunito", sans-serif;
   font-family: "Poppins", sans-serif;
+  background: transparent !important;
+  font-weight: bold;
 }
 
 .ant-layout-footer span {

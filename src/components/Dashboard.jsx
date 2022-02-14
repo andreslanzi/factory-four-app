@@ -423,6 +423,7 @@ const Dashboard = () => {
           };
         });
       });
+
     setApiFetched(true);
   };
 
@@ -447,7 +448,9 @@ const Dashboard = () => {
                     textAlign: "center",
                     color: "black",
                   }
-                : { textAlign: "center", color: "red" }
+                : dataFetched[key]?.hostname === "403"
+                ? { textAlign: "center", color: "red" }
+                : { textAlign: "center" }
             }
             headStyle={
               dataFetched[key].success
@@ -456,11 +459,13 @@ const Dashboard = () => {
                     color: "white",
                     textAlign: "center",
                   }
-                : {
+                : dataFetched[key]?.hostname === "403"
+                ? {
                     backgroundColor: "red",
                     color: "black",
                     textAlign: "center",
                   }
+                : { textAlign: "center" }
             }
             hoverable
           >
@@ -479,7 +484,7 @@ const Dashboard = () => {
                   {unixTime(dataFetched[key]?.time)}
                 </p>
               </div>
-            ) : (
+            ) : dataFetched[key]?.hostname === "403" ? (
               <div className="card-content">
                 <div className="error-message">
                   <span>OUTAGE</span>
@@ -492,7 +497,7 @@ const Dashboard = () => {
                   </p>
                 </div>
               </div>
-            )}
+            ) : null}
           </Card>
         </Col>
       ))}
